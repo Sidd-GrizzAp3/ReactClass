@@ -1,8 +1,10 @@
 import React from 'react'; 
 import {Router, IndexRoute} from 'react-router'; 
 
+// compoenents 
 import App from './components/app'; 
 import PostsIndex from './components/posts_index'; 
+import PostsNew   from './components/posts_new';
 
 
 /**
@@ -14,5 +16,8 @@ export default (
     <Router path="/" component={App}> 
         <IndexRoute  component={PostsIndex /* still a child of 
                                               the parent App */} /> 
-    </Router>  
+        <Router path="/posts/new" component={PostsNew} />
+    </Router>
+
+
 ); 
