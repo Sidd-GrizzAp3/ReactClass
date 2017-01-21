@@ -16,8 +16,11 @@ class PostsNew extends Component {
                 <h3>Create A New Post </h3>
                 
                 <div className="form-group">
-                 <label>Title</label>
-                 <input type="text" className="form-control" {...title} />                
+                    <label>Title</label>
+                    <input type="text" className="form-control" {...title} />   
+                    <div className="text-help"> 
+                        {title.touched ? title.error : null }
+                    </div>             
                 </div>
                 
                 <div className="form-group">
@@ -41,7 +44,7 @@ function validate (values) {
     const errors = {};
 
     if(!values.title) {
-        error.title = 'Enter a username';
+        errors.title = 'Enter a title';
     }
     return errors; 
 }
