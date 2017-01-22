@@ -24,3 +24,7 @@
 .list-group-item:hover {
     background-color: #eee;
 }
+
+form a {
+    margin-left: 5px;  
+}
