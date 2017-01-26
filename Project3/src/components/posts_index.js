@@ -7,7 +7,6 @@ import {Link}                   from 'react-router';
  *  learning about component lifecycle 
  */
 class PostsIndex extends Component {
-    
     /**
      * ony is called ONCE right before the DOM 
      *  gets loaded with this visual or functional component 
@@ -20,8 +19,10 @@ class PostsIndex extends Component {
         return this.props.posts.map((post) => {
             return (
                 <li className="list-gorup-item" key={post.id}>
-                <span className="pull-xs-right">{post.categories}</span>
-                <strong>{post.title}</strong>
+                  <Link to={`/posts/${post.id}`}> 
+                    <span className="pull-xs-right">{post.categories}</span>
+                    <strong>{post.title}</strong>
+                  </Link> 
                 </li>
             );
         });

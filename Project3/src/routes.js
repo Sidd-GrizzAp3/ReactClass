@@ -1,10 +1,11 @@
 import React from 'react'; 
-import {Router, IndexRoute} from 'react-router'; 
+import { Route, IndexRoute} from 'react-router'; 
 
 // compoenents 
 import App from './components/app'; 
 import PostsIndex from './components/posts_index'; 
 import PostsNew   from './components/posts_new';
+import PostsShow  from './components/posts_show';
 
 
 /**
@@ -13,11 +14,13 @@ import PostsNew   from './components/posts_new';
  *      => promps react to render the app 
  */
 export default (
-    <Router path="/" component={App}> 
+    <Route path="/" component={App}> 
         <IndexRoute  component={PostsIndex /* still a child of 
-                                              the parent App */} /> 
-        <Router path="/posts/new" component={PostsNew} />
-    </Router>
+            the parent App */} /> 
+        <Route path="/posts/new"    component={PostsNew} />
+        <Route path="/posts/:id"    component={PostsShow} /> 
+
+    </Route>
 
 
 ); 
