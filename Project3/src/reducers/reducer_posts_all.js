@@ -1,6 +1,7 @@
 import React from 'react'; 
 import {FETCH_POSTS} from '../actions/index';
 import {FETCH_POST}  from '../actions/index'; 
+import {DELETE_POST} from '../actions/index';
 
 const INITIAL_STATE = {all: [], active: null};  // all the  blog posts and one active one 
 
@@ -14,6 +15,9 @@ export default  (state = INITIAL_STATE, action) => {
         case FETCH_POST: 
             return {...state, post: action.payload.data};  // returns a new object with the post we want to the state  
             break; 
+
+        case DELETE_POST: 
+            return {...state, post_to_delete: action.payload.data}; 
 
         default:
             return state;
