@@ -1,10 +1,14 @@
-import React, { Component } from 'react'; 
+import React, { Component, PropTypes } from 'react'; 
 import { connect }          from 'react-redux'; 
 import { fetchPost, deletePost }        from '../actions/index';
 import { Link }             from 'react-router';
 
 class PostsShow extends Component {
-    
+    // static method to link the router context object 
+    static contextTypes = {
+        router: PropTypes.object
+    }
+
     componentWillMount() {
         this.props.fetchPost(this.props.params.id); 
     }
@@ -20,7 +24,9 @@ class PostsShow extends Component {
     }
     
     onDeleteClick() {
-        this.props.deletePost(this.props.params.id);
+        this.props.deletePost(this.props.params.id).then( () => {
+            this.context.router.push('/');
+        });
     }
     // lets use an ajax spinner type "loading!"
     render () {
