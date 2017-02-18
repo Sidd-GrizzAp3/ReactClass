@@ -13,4 +13,5 @@ it('shows the correct text')
 
 
 
-//expect 
+//use 'exepct' to make an 'assertion' about a target (device under test ) 
+expect('')
