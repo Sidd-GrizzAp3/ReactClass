@@ -30,12 +30,11 @@ exports.signup = function(req,res,next) {
         // if a user with email does NOT exist, create and save user record 
         const user = new User({
             email: email, 
-            passowrd: password
+            password: password
         });
 
         user.save(function (err){
-            if (err) { return next(err) }; 
-
+            if (err) { return next(err) };
             // Respond to request indicating the user was created 
             res.json({ success: 'true', token: tokenForUser(user) });
         });

@@ -4,17 +4,18 @@ const config    = require('../config')
 const JwtStrategy   = require('passport-jwt').Strategy
 const ExtractJwt    = require('passport-jwt').ExtractJwt
 const LocalStrategy = require('passport-local')
+const bcrypt        = require('bcrypt-nodejs')
 
 const localOptions = { usernameField: 'email' }
 
 // Create local strategy 
-const localLogin = new LocalStrategy(localOptions, function(email,password,done){
+const localLogin = new LocalStrategy(localOptions, function(email, password, done){
     /// Verify this email and password, call done with the user
     // call either done with user or null depending on errors. 
+
     User.findOne({email: email}, function (err, user) {
         if (err) { return done(err) }
         if (!user) { return done(null, false) }
-
         // found user: now compare passwords: 
         user.comparePassword(password, function(err, isMatch){
             if (err) { return done(err) }
@@ -24,7 +25,6 @@ const localLogin = new LocalStrategy(localOptions, function(email,password,done)
     })
 
 })
-
 
 
 // Setup options for jwt strategy 
